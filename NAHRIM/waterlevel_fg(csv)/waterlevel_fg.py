@@ -280,7 +280,9 @@ def save_to_obs(data, obs_config):
         csv_content = output.getvalue()
 
         timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-        object_key = f"{OBS_OBJECT_PREFIX}/waterlevel_jps__{timestamp}.csv"
+        object_key = f"{OBS_OBJECT_PREFIX}/waterlevel_{timestamp}.csv"
+        #object_key = f"{OBS_OBJECT_PREFIX}/waterlevel_jps__{timestamp}.csv"
+        #waterlevel_20251204094545.csv
 
         resp = obs_client.putContent(
             bucketName=OBS_BUCKET,

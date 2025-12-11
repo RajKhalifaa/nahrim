@@ -14,7 +14,7 @@ from obs import ObsClient  # Huawei OBS SDK
 OBS_ENDPOINT = os.getenv("OBS_ENDPOINT")
 OBS_BUCKET = os.getenv("OBS_BUCKET")
 OBS_OBJECT_PREFIX = os.getenv("OBS_FOLDER")
-
+OBS_FILENAME = "waterquality_"
 OBS_AK = os.getenv("OBS_AK")  # Access Key
 OBS_SK = os.getenv("OBS_SK")  # Secret Key
 
@@ -149,7 +149,7 @@ def save_to_obs(data, obs_config):
         # ------------------------------------------------
 
         timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-        object_key = f"{OBS_OBJECT_PREFIX}/waterquality_myeqms__{timestamp}.csv"
+        object_key = f"{OBS_OBJECT_PREFIX}/{OBS_FILENAME}{timestamp}.csv"
 
         # Upload to OBS
         resp = obs_client.putContent(
